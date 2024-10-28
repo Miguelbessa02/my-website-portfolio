@@ -1,5 +1,9 @@
 import { Link } from 'react-scroll';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+
 
 // Styled Components
 const Nav = styled.nav`
@@ -50,22 +54,32 @@ const ContactButton = styled(Link)`
   border-radius: 20px;
   cursor: pointer;
   transition: background-color 0.3s;
-
+  
   &:hover {
     background-color: gray;
     color: white;
   }
 `;
 
+const IconLogo = styled(FontAwesomeIcon)`
+  margin-right: 20px; // Adicione espaço entre o ícone e o texto
+`;
+
+const Icon = styled(FontAwesomeIcon)`
+  padding-left: 10px;
+`;
+
 function Navbar() {
   return (
     <Nav>
-      <Logo>Miguel Ferreira</Logo>
+      <Logo><IconLogo icon={faStar} />Miguel Ferreira</Logo>
       <NavList>
         <NavItem><NavLink to="home" smooth={true} duration={500}>Home</NavLink></NavItem>
         <NavItem><NavLink to="about" smooth={true} duration={500}>About Me</NavLink></NavItem>
         <NavItem><NavLink to="projects" smooth={true} duration={500}>Portfolio</NavLink></NavItem>
-        <NavItem><ContactButton to="contact" smooth={true} duration={500}>Contact</ContactButton></NavItem>
+        <NavItem>
+          <ContactButton to="contact" smooth={true} duration={500}>Contact<Icon icon={faArrowRight} /></ContactButton>
+        </NavItem>
       </NavList>
     </Nav>
   );
